@@ -33,14 +33,14 @@ public class ControlScriptRight : MonoBehaviour {
 		grounded = Physics2D.OverlapCircle(groundedCheck.position, groundRadius, whatIsGround);
 		anim.SetBool ("Ground", grounded);
 		
-		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
+		anim.SetFloat ("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
 		
 		if (grounded || move*Input.GetAxis("HorizontalRight") < 0 || (move*Input.GetAxis ("HorizontalRight") > 0 && Mathf.Abs(Input.GetAxis("HorizontalRight")) > Mathf.Abs(move)) || move == 0) {
 			
 			move = Input.GetAxis ("HorizontalRight");
 		}
 		anim.SetFloat ("Speed", Mathf.Abs (move));
-		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 		
 		if(move > 0 && !facingRight || move < 0 && facingRight) 
 			Flip ();
@@ -79,7 +79,7 @@ public class ControlScriptRight : MonoBehaviour {
     
     void Jump() {
         anim.SetBool("Ground", false);
-        rigidbody2D.AddForce (new Vector2(0, jumpForce));
+        GetComponent<Rigidbody2D>().AddForce (new Vector2(0, jumpForce));
         jumpBufferEnable = false;
     }
     

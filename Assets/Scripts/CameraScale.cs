@@ -5,6 +5,6 @@ public class CameraScale : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake() {
-		camera.orthographicSize = Screen.height/2f;
+		GetComponent<Camera>().orthographicSize = Screen.height/2f;
 	}
 }

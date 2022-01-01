@@ -11,7 +11,7 @@ public class PressurePlate : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if((col.gameObject.name=="RightPlayer" | col.gameObject.name=="LeftPlayer") && col.GetType() == typeof(CircleCollider2D)){
-			this.renderer.enabled = false;
+			this.GetComponent<Renderer>().enabled = false;
 			target.SetActive(false);
 			collision = true;
 			timeSinceLastCollision = 0;
@@ -32,7 +32,7 @@ public class PressurePlate : MonoBehaviour {
 		if (!collision) {
 			timeSinceLastCollision += Time.deltaTime;  
 			if (timeSinceLastCollision > delayTime) {
-				this.renderer.enabled = true;
+				this.GetComponent<Renderer>().enabled = true;
 				target.SetActive(true);
 				timeSinceLastCollision = 0;
 			}
